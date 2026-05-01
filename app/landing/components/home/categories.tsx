@@ -31,29 +31,29 @@ const categoryList = [
 
 const CategoriesSection = () => {
   return (
-    <section id="category-section" className="container mx-auto pb-20">
-      <div className="flex justify-between">
+    <section id="category-section" className="container mx-auto pb-20 px-4 lg:px-0">
+      <div className="flex flex-wrap justify-between items-center gap-3">
         <h2 className="font-bold text-2xl">Browse By Categories</h2>
         <Link href="#" className="flex gap-2 text-primary font-medium">
           <span className="self-center">See All Categories</span>
           <FiArrowRight className="self-center" />
         </Link>
       </div>
-      <div className="grid grid-cols-6 gap-12 mt-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-12 mt-8">
         {categoryList.map((category, index) => (
           <div
-            className="rounded-lg bg-gradient-to-r from-[#F1F1F1] to-[#F7F7F7] w-full aspect-square flex justify-center"
+            className="rounded-lg bg-gradient-to-r from-[#F1F1F1] to-[#F7F7F7] w-full aspect-square flex justify-center hover:shadow-md transition-shadow"
             key={index}
           >
-            <div className="self-center">
+            <div className="self-center text-center">
               <Image
                 src={`/images/categories/${category.imgUrl}`}
                 width={86}
-                height="86"
+                height={86}
                 alt={category.name}
-                className="mb-[10px]"
+                className="mb-[10px] mx-auto"
               />
-              <div className="text-primary font-medium text-xl text-center">
+              <div className="text-primary font-medium text-base lg:text-xl text-center">
                 {category.name}
               </div>
             </div>
@@ -64,4 +64,4 @@ const CategoriesSection = () => {
   );
 };
 
-export default CategoriesSection;
+export default CategoriesSection;

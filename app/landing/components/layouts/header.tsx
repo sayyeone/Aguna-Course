@@ -1,49 +1,64 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import Button from "../ui/button";
+import { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
 
-const Footer = () => {
+const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <footer className="bg-dark-alternate  text-white mt-52">
-      <div className="container mx-auto flex justify-between pt-14 pb-24">
-        <div className="w-105">
-          <Image
-            src="/images/logo-footer.svg"
-            alt="logo sporton footer"
-            width={187}
-            height={44}
-          />
-          <p className="mt-8">
-            Engineered for endurance and designed for speed. Experience gear
-            that moves as fast as you do.
-          </p>
-        </div>
-        <div className="w-105 grid grid-cols-2">
-          <div className="flex gap-7 flex-col">
-            <Link href="#">Home</Link>
-            <Link href="#">Categories</Link>
-            <Link href="#">Products</Link>
-            <Link href="#">About Us</Link>
-          </div>
-          <div className="flex gap-7 flex-col">
-            <Link href="#">Instagram</Link>
-            <Link href="#">Facebook</Link>
-            <Link href="#">TikTok</Link>
-            <Link href="#">YouTube</Link>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-t-white/15">
-        <div className="container mx-auto py-6.5 flex justify-between">
-          <div>SportsOn © 2025 All Rights Reserverd.</div>
+    <header className="container mx-auto flex justify-between items-center py-6 px-4 lg:px-0 relative">
+      {/* Logo */}
+      <Link href="/">
+        <Image
+          src="/images/logo.svg"
+          alt="logo sporton"
+          width={140}
+          height={33}
+        />
+      </Link>
 
-          <div className="grid grid-cols-2 w-105">
-            <Link href="#">Privacy Policy</Link>
-            <Link href="#">Terms Conditions</Link>
+      {/* Desktop Nav */}
+      <nav className="hidden lg:flex gap-10">
+        <Link href="#" className="font-medium hover:text-primary transition-colors">Home</Link>
+        <Link href="#category-section" className="font-medium hover:text-primary transition-colors">Categories</Link>
+        <Link href="#products-section" className="font-medium hover:text-primary transition-colors">Products</Link>
+        <Link href="#" className="font-medium hover:text-primary transition-colors">About Us</Link>
+      </nav>
+
+      {/* Desktop Auth */}
+      <div className="hidden lg:flex gap-4 items-center">
+        <Link href="#" className="font-medium hover:text-primary transition-colors">Login</Link>
+        <Button size="small">Sign Up</Button>
+      </div>
+
+      {/* Mobile Hamburger */}
+      <button
+        className="lg:hidden p-2 text-dark"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+      >
+        {menuOpen ? <FiX size={26} /> : <FiMenu size={26} />}
+      </button>
+
+      {/* Mobile Dropdown */}
+      {menuOpen && (
+        <div className="absolute top-full left-0 right-0 bg-white shadow-lg z-50 flex flex-col gap-4 px-6 py-6 lg:hidden">
+          <Link href="#" className="font-medium hover:text-primary transition-colors" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link href="#category-section" className="font-medium hover:text-primary transition-colors" onClick={() => setMenuOpen(false)}>Categories</Link>
+          <Link href="#products-section" className="font-medium hover:text-primary transition-colors" onClick={() => setMenuOpen(false)}>Products</Link>
+          <Link href="#" className="font-medium hover:text-primary transition-colors" onClick={() => setMenuOpen(false)}>About Us</Link>
+          <div className="flex gap-3 pt-2 border-t border-gray-100">
+            <Link href="#" className="font-medium hover:text-primary transition-colors">Login</Link>
+            <Button size="small">Sign Up</Button>
           </div>
         </div>
-      </div>
-    </footer>
+      )}
+    </header>
   );
 };
 
-export default Footer;
+export default Header;

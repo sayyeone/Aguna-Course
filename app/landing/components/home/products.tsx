@@ -44,11 +44,11 @@ const productList = [
 
 const ProductsSection = () => {
   return (
-    <section id="products-section" className="container mx-auto mt-32">
-      <h2 className="font-bold italic text-4xl text-center mb-11">
+    <section id="products-section" className="container mx-auto mt-20 lg:mt-32 px-4 lg:px-0">
+      <h2 className="font-bold italic text-3xl lg:text-4xl text-center mb-11">
         <span className="text-primary">OUR </span>PRODUCTS
       </h2>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {productList.map((product, index) => (
           <Link
             href="#"
@@ -85,4 +85,4 @@ const ProductsSection = () => {
   );
 };
 
-export default ProductsSection;
+export default ProductsSection;
