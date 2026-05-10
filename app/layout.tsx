@@ -3,7 +3,6 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { CartProvider } from "./context/cart-context";
 import Header from "./landing/components/layouts/header";
 import Footer from "./landing/components/layouts/footer";
 
@@ -29,14 +28,12 @@ export default function RootLayout({
       className={`${poppins.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <CartProvider>
-          <Header />
-          <div className="flex-grow">
-            {children}
-          </div>
-          <Footer />
-          <ToastContainer />
-        </CartProvider>
+        <Header />
+        <div className="flex-grow">
+          {children}
+        </div>
+        <Footer />
+        <ToastContainer />
       </body>
     </html>
   );

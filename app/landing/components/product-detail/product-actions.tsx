@@ -10,21 +10,21 @@ import Button from "../ui/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { useCart } from "@/app/context/cart-context";
+import { useCartStore } from "@/app/hooks/use-cart-store";
+import { Product } from "@/app/types";
 
-const ProductActions = () => {
+type TProductActionsProps = {
+  product: Product;
+  stock: number;
+};
+
+const ProductActions = ({ product, stock }: TProductActionsProps) => {
   const { push } = useRouter();
-  const { addToCart } = useCart();
+  const { addItem } = useCartStore();
   const [qty, setQty] = useState(1);
 
   const handleAddToCart = () => {
-    addToCart({
-      name: "SportsOn HyperSoccer v2", // Hardcoded for this template page
-      category: "Football",
-      price: 458000,
-      qty: qty,
-      imgUrl: "product-4.png",
-    });
+    addItem(product, qty);
 
     toast.success(`${qty} item(s) added to cart!`, {
       position: "bottom-right",
@@ -32,24 +32,29 @@ const ProductActions = () => {
     });
   };
 
+  const handleCheckout = () => {
+    addItem(product);
+    push("/checkout");
+  };
+
   return (
-    <div className="flex gap-5">
-      <div className="border border-gray-500 inline-flex w-fit min-w-20.5">
-        <div className="aspect-square text-xl font-medium border-r border-gray-500 flex justify-center items-center">
+    <div className="flex flex-col sm:flex-row gap-5">
+      <div className="border border-gray-500 inline-flex w-full sm:w-fit min-w-20.5">
+        <div className="aspect-square text-xl font-medium border-r border-gray-500 flex justify-center items-center flex-grow sm:flex-grow-0 px-6 sm:px-0">
           <span>{qty}</span>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col w-12">
           <button
-            className="border-b border-gray-500 cursor-pointer h-1/2 aspect-square flex items-center justify-center"
-            onClick={() => setQty(qty + 1)}
+            className="border-b border-gray-500 cursor-pointer h-1/2 flex items-center justify-center hover:bg-gray-50 transition-colors"
+            onClick={() => setQty(qty < stock ? qty + 1 : qty)}
           >
-            <FiChevronUp />
+            <FiChevronUp size={16} />
           </button>
           <button
-            className="cursor-pointer h-1/2 aspect-square flex items-center justify-center"
+            className="cursor-pointer h-1/2 flex items-center justify-center hover:bg-gray-50 transition-colors"
             onClick={() => setQty(qty > 1 ? qty - 1 : qty)}
           >
-            <FiChevronDown />
+            <FiChevronDown size={16} />
           </button>
         </div>
       </div>
@@ -60,7 +65,7 @@ const ProductActions = () => {
       <Button
         variant="dark"
         className="px-20 w-full"
-        onClick={() => push("/checkout")}
+        onClick={handleCheckout}
       >
         Checkout Now
         <FiArrowRight size={24} />
