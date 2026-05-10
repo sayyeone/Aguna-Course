@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import CardWithHeader from "../ui/card-with-header";
 import { CustomerInfo } from "@/app/hooks/use-cart-store";
 
