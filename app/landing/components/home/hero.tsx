@@ -12,7 +12,7 @@ const HeroSection = () => {
         <div className="container mx-auto h-full flex items-center relative">
           {/* Basketball decorative */}
           <Image
-            src="/images/img-basketball-transparent.png"
+            src="/images/img-basketball.png"
             width={432}
             height={423}
             alt="image sporton"
