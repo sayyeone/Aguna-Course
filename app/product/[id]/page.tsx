@@ -44,10 +44,11 @@ const ProductDetailContent = async ({ id }: { id: string }) => {
         <p className="leading-loose mb-8 text-gray-600">
           {product.description || "The SportsOn product is engineered for the player who demands precision, power, and unrivaled speed on the pitch."}
         </p>
-        <div className="text-primary text-3xl lg:text-[32px] font-bold mb-12">
+        <div className="text-primary text-3xl lg:text-[32px] font-bold mb-8">
           {priceFormatter(product.price)}
         </div>
-        <ProductActions product={product} />
+        <div className="mb-5 font-medium text-gray-500">Stock Product : {product.stock}</div>
+        <ProductActions product={product} stock={product.stock} />
       </div>
     </main>
   );
