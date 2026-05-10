@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../ui/button";
 import { FiPlus } from "react-icons/fi";
+import priceFormatter from "@/app/utils/price-formatter";
+import { toast } from "react-toastify";
+import { useCart } from "@/app/context/cart-context";
 
 const productList = [
   {
@@ -43,6 +48,26 @@ const productList = [
 ];
 
 const ProductsSection = () => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e: React.MouseEvent, product: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    addToCart({
+      name: product.name,
+      category: product.category,
+      price: product.price,
+      qty: 1,
+      imgUrl: product.imgUrl,
+    });
+
+    toast.success(`${product.name} added to cart!`, {
+      position: "bottom-right",
+      autoClose: 3000,
+    });
+  };
+
   return (
     <section id="products-section" className="container mx-auto mt-20 lg:mt-32 px-4 lg:px-0">
       <h2 className="font-bold italic text-3xl lg:text-4xl text-center mb-11">
@@ -51,19 +76,22 @@ const ProductsSection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {productList.map((product, index) => (
           <Link
-            href="#"
+            href={`/product/${index + 1}`}
             key={index}
-            className="p-1.5 bg-white hover:drop-shadow-xl duration-300"
+            className="p-1.5 bg-white hover:drop-shadow-xl duration-300 group"
           >
-            <div className="bg-primary-light aspect-square w-full flex justify-center items-center relative">
+            <div className="bg-primary-light aspect-square w-full flex justify-center items-center relative overflow-hidden">
               <Image
                 src={`/images/products/${product.imgUrl}`}
                 alt={product.name}
                 width={300}
                 height={300}
-                className="aspect-square object-contain"
+                className="aspect-square object-contain group-hover:scale-110 duration-500"
               />
-              <Button className="w-10 h-10 p-2! absolute right-3 top-3 ">
+              <Button
+                className="w-10 h-10 p-2! absolute right-3 top-3 opacity-0 group-hover:opacity-100 duration-300 translate-y-2 group-hover:translate-y-0"
+                onClick={(e) => handleAddToCart(e, product)}
+              >
                 <FiPlus size={24} />
               </Button>
             </div>
@@ -71,11 +99,7 @@ const ProductsSection = () => {
             <div className="flex justify-between mb-8">
               <div className="text-gray-500">{product.category}</div>
               <div className="font-medium text-primary">
-                {Intl.NumberFormat("id-ID", {
-                  style: "currency",
-                  currency: "IDR",
-                  maximumSignificantDigits: 3,
-                }).format(product.price)}
+                {priceFormatter(product.price)}
               </div>
             </div>
           </Link>

@@ -15,7 +15,7 @@ const CtaSection = () => {
 
         {/* Basketball Image - decorative */}
         <Image
-          src="/images/img-basketball-transparent.png"
+          src="/images/img-basketball.png"
           alt=""
           width={260}
           height={260}
