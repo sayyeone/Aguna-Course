@@ -3,14 +3,12 @@ import ProductActions from "../../landing/components/product-detail/product-acti
 import priceFormatter from "@/app/utils/price-formatter";
 import { getProductDetail } from "@/app/services/product.service";
 import { getImageUrl } from "@/app/lib/api";
-import { use } from "react";
-
-type TProductDetailPageProps = {
+export type TPageProps = {
   params: Promise<{ id: string }>;
 };
 
-const ProductDetail = ({ params }: TProductDetailPageProps) => {
-  const { id } = use(params);
+const ProductDetail = async ({ params }: TPageProps) => {
+  const { id } = await params;
   
   // Since this is a server component by default, we can just await the service
   // But wait, the user's project structure might expect it to be a client component if it uses hooks.

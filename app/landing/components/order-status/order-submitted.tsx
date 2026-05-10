@@ -6,11 +6,7 @@ import { FiRefreshCw } from "react-icons/fi";
 import { useParams } from "next/navigation";
 
 const OrderSubmitted = () => {
-  const { id } = useParams();
-
   const reloadOrderStatus = () => {
-    // Set flag to true so it shows as confirmed on refresh
-    localStorage.setItem(`order_confirmed_${id}`, "true");
     window.location.reload();
   };
 
