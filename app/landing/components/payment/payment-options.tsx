@@ -1,42 +1,32 @@
 import { FiCreditCard } from "react-icons/fi";
 import CardWithHeader from "../ui/card-with-header";
+import { getAllBanks } from "@/app/services/bank.service";
 
-const paymentList = [
-  {
-    bank_name: "BCA",
-    account_number: 1231231231231,
-    account_holder: "PT SportsOn Digital",
-  },
-  {
-    bank_name: "Mandiri",
-    account_number: 89458434,
-    account_holder: "PT SportsOn Digital",
-  },
-  {
-    bank_name: "BRI",
-    account_number: 123891283912,
-    account_holder: "PT SportsOn Digital",
-  },
-];
+const PaymentOptions = async () => {
+  const banks = await getAllBanks();
 
-const PaymentOptions = () => {
   return (
     <CardWithHeader title="Payment Options">
-      {paymentList.map((payment, index) => (
-        <div className="flex gap-5 p-5 border-b border-gray-100" key={index}>
-          <div className="bg-blue-100 p-4 text-blue-500 h-fit self-center">
-            <FiCreditCard size={24} />
+      <div className="flex flex-col">
+        {banks?.map((payment, index) => (
+          <div className="flex gap-5 p-5 lg:p-6 border-b border-gray-100 hover:bg-gray-50 transition-colors" key={index}>
+            <div className="bg-primary-light p-4 text-primary rounded-xl h-fit self-center">
+              <FiCreditCard size={24} />
+            </div>
+            <div className="self-center">
+              <div className="font-bold text-dark text-lg">{payment.bankName}</div>
+              <div className="text-sm font-medium text-gray-600 tracking-wider">{payment.accountNumber}</div>
+              <div className="text-xs font-semibold text-gray-400 mt-1 uppercase tracking-tight">{payment.accountName}</div>
+            </div>
+            <div className="ml-auto bg-primary/10 text-primary text-[10px] font-bold h-fit self-center px-3 py-1.5 rounded-full uppercase">
+              Bank Transfer
+            </div>
           </div>
-          <div className="self-center">
-            <div className="font-bold">{payment.bank_name}</div>
-            <div className="text-sm">{payment.account_number}</div>
-            <div className="text-sm opacity-70">{payment.account_holder}</div>
-          </div>
-          <div className="ml-auto bg-blue-50 text-gray-800 text-xs h-fit self-center px-2 py-1">
-            Bank Transfer
-          </div>
-        </div>
-      ))}
+        ))}
+        {(!banks || banks.length === 0) && (
+          <div className="p-10 text-center text-gray-400">No payment options available</div>
+        )}
+      </div>
     </CardWithHeader>
   );
 };
