@@ -1,6 +1,6 @@
-import OrderConfirmed from "../../landing/components/order-status/order-confirmed";
-import OrderSubmitted from "../../landing/components/order-status/order-submitted";
-import OrderRejected from "../../landing/components/order-status/order-rejected";
+import OrderConfirmed from "../../components/order-status/order-confirmed";
+import OrderSubmitted from "../../components/order-status/order-submitted";
+import OrderRejected from "../../components/order-status/order-rejected";
 import { getTransactionById } from "@/app/services/transaction.service";
 
 type TPageProps = {

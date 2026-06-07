@@ -1,5 +1,5 @@
-import PaymentOptions from "../landing/components/payment/payment-options";
-import PaymentSteps from "../landing/components/payment/payment-steps";
+import PaymentOptions from "../components/payment/payment-options";
+import PaymentSteps from "../components/payment/payment-steps";
 
 const Payment = () => {
   return (
