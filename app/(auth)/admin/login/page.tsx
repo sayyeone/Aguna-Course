@@ -3,7 +3,6 @@
 import Button from "@/app/(landing)/components/ui/button";
 import { login } from "@/app/services/auth.service";
 import Image from "next/image";
-import LogoAdmin from "../../../../../public/images/logo-admin.svg";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -46,9 +45,12 @@ const LoginPage = () => {
   return (
     <main className="bg-[#F7F9FA] w-full min-h-screen flex justify-center items-center">
       <div className="max-w-136 w-full bg-white rounded-xl border-t-4 border-primary py-12 px-[72px]">
-        <Image
-          src={LogoAdmin}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/logo-admin.svg"
           alt="logo admin"
+          width={304}
+          height={51}
           className="mx-auto mb-4"
         />
         <p className="opacity-50 text-sm text-center mb-9">
