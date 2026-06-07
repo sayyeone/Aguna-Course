@@ -30,6 +30,7 @@ const Header = () => {
           <Link href="/" className="hover:text-primary transition-colors">Home</Link>
           <Link href="#category-section" className="hover:text-primary transition-colors">Category</Link>
           <Link href="#products-section" className="hover:text-primary transition-colors">Explore Products</Link>
+          <Link href="/admin/login" className="hover:text-primary transition-colors text-gray-500">Admin</Link>
         </nav>
 
         {/* Desktop Icons */}
@@ -89,6 +90,7 @@ const Header = () => {
             <Link href="/" className="font-semibold hover:text-primary transition-colors text-lg" onClick={() => setMenuOpen(false)}>Home</Link>
             <Link href="#category-section" className="font-semibold hover:text-primary transition-colors text-lg" onClick={() => setMenuOpen(false)}>Category</Link>
             <Link href="#products-section" className="font-semibold hover:text-primary transition-colors text-lg" onClick={() => setMenuOpen(false)}>Explore Products</Link>
+            <Link href="/admin/login" className="font-semibold hover:text-primary transition-colors text-lg text-gray-500" onClick={() => setMenuOpen(false)}>Admin</Link>
           </div>
         )}
       </div>
