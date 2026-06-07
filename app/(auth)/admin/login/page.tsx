@@ -62,26 +62,26 @@ const LoginPage = () => {
           </div>
         )}
 
-        <div className="input-group-admin mb-5">
-          <label htmlFor="email">Email</label>
+        <div className="mb-5">
+          <label htmlFor="email" className="block text-xs mb-1">Email</label>
           <input
             type="email"
             id="email"
             name="email"
             placeholder="Please type your email"
-            className="!rounded-lg"
+            className="px-4 py-3 w-full border border-[#DBDBDB] !rounded-lg focus:border-gray-500 outline-none text-sm"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className="input-group-admin mb-12">
-          <label htmlFor="password">Password</label>
+        <div className="mb-12">
+          <label htmlFor="password" className="block text-xs mb-1">Password</label>
           <input
             type="password"
             id="password"
             name="password"
             placeholder="••••••••••••••••••••"
-            className="!rounded-lg"
+            className="px-4 py-3 w-full border border-[#DBDBDB] !rounded-lg focus:border-gray-500 outline-none text-sm"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
