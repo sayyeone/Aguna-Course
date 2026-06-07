@@ -45,8 +45,7 @@ const LoginPage = () => {
   return (
     <main className="bg-[#F7F9FA] w-full min-h-screen flex justify-center items-center">
       <div className="max-w-136 w-full bg-white rounded-xl border-t-4 border-primary py-12 px-[72px]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/images/logo-admin.svg"
           alt="logo admin"
           width={304}
@@ -70,7 +69,7 @@ const LoginPage = () => {
             id="email"
             name="email"
             placeholder="Please type your email"
-            className="rounded-lg!"
+            className="!rounded-lg"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -82,12 +81,12 @@ const LoginPage = () => {
             id="password"
             name="password"
             placeholder="••••••••••••••••••••"
-            className="rounded-lg!"
+            className="!rounded-lg"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <Button className="w-full rounded-lg! mb-8" onClick={handleLogin}>
+        <Button className="w-full !rounded-lg mb-8" onClick={handleLogin}>
           {isLoading ? "Signing in ..." : "Sign In"}
         </Button>
       </div>

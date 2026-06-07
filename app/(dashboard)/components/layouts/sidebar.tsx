@@ -40,8 +40,7 @@ const Sidebar = () => {
   return (
     <aside className="w-80 min-h-screen bg-white border-r border-gray-100 flex flex-col fixed left-0 top-0">
       <div className="py-8 px-14 border-b border-gray-200">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/images/logo-admin.svg"
           alt="logo admin"
           width={215}
@@ -55,9 +54,8 @@ const Sidebar = () => {
             <Link
               href={item.link}
               key={index}
-              className={`flex gap-3 items-center py-3 px-4.5 rounded-lg font-medium duration-300 ${
-                isActive ? "bg-primary/15 text-primary" : "hover:bg-gray-100"
-              }`}
+              className={`flex gap-3 items-center py-3 px-4.5 rounded-lg font-medium duration-300 ${isActive ? "bg-primary/15 text-primary" : "hover:bg-gray-100"
+                }`}
             >
               <item.icon size={24} />
               <span>{item.name}</span>
