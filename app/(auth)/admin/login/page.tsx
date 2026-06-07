@@ -3,6 +3,7 @@
 import Button from "@/app/(landing)/components/ui/button";
 import { login } from "@/app/services/auth.service";
 import Image from "next/image";
+import LogoAdmin from "../../../../../public/images/logo-admin.svg";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -46,10 +47,8 @@ const LoginPage = () => {
     <main className="bg-[#F7F9FA] w-full min-h-screen flex justify-center items-center">
       <div className="max-w-136 w-full bg-white rounded-xl border-t-4 border-primary py-12 px-[72px]">
         <Image
-          src="/images/logo-admin.svg"
+          src={LogoAdmin}
           alt="logo admin"
-          width={304}
-          height={51}
           className="mx-auto mb-4"
         />
         <p className="opacity-50 text-sm text-center mb-9">

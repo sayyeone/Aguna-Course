@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import LogoAdmin from "../../../../../public/images/logo-admin.svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -41,10 +42,8 @@ const Sidebar = () => {
     <aside className="w-80 min-h-screen bg-white border-r border-gray-100 flex flex-col fixed left-0 top-0">
       <div className="py-8 px-14 border-b border-gray-200">
         <Image
-          src="/images/logo-admin.svg"
+          src={LogoAdmin}
           alt="logo admin"
-          width={215}
-          height={36}
         />
       </div>
       <div className="flex flex-col gap-2 mt-12 p-5">
